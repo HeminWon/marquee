@@ -1,5 +1,5 @@
 //
-//  MarqueeView.h
+//  MHMarqueeView.h
 //  Marquee_Collection_OC
 //
 //  Created by HeminWon on 2018/7/12.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MarqueeView : UIView
+@interface MHMarqueeView : UIView
 
 @end
 

@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "MHMarqueeView/MHMarqueeView.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) MHMarqueeView *marqueeView;
 
 @end
 
@@ -16,8 +19,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.view addSubview:self.marqueeView];
+    
+    
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    self.marqueeView.frame = CGRectMake(10, 100, 355, 30);
+}
+
+#pragma mark - setter && getter
+- (MHMarqueeView *)marqueeView {
+    if (!_marqueeView) {
+        _marqueeView = [[MHMarqueeView alloc] init];
+        _marqueeView.backgroundColor = [UIColor lightGrayColor];
+    }
+    return _marqueeView;
+}
 
 @end

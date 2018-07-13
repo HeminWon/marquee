@@ -15,7 +15,8 @@
 		A4C09EC320F771A7001CA003 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C09EC220F771A7001CA003 /* main.m */; };
 		A4C09ECD20F771A7001CA003 /* Marquee_Collection_OCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C09ECC20F771A7001CA003 /* Marquee_Collection_OCTests.m */; };
 		A4C09ED820F771A7001CA003 /* Marquee_Collection_OCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C09ED720F771A7001CA003 /* Marquee_Collection_OCUITests.m */; };
-		A4C09EE820F77331001CA003 /* MarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C09EE720F77331001CA003 /* MarqueeView.m */; };
+		A4FF7DDE20F8F51900841F32 /* MHMarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FF7DD920F8F51900841F32 /* MHMarqueeView.m */; };
+		A4FF7DDF20F8F51900841F32 /* MHMarqueeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FF7DDD20F8F51900841F32 /* MHMarqueeCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +53,10 @@
 		A4C09ED320F771A7001CA003 /* Marquee_Collection_OCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Marquee_Collection_OCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C09ED720F771A7001CA003 /* Marquee_Collection_OCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Marquee_Collection_OCUITests.m; sourceTree = "<group>"; };
 		A4C09ED920F771A7001CA003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A4C09EE620F77331001CA003 /* MarqueeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarqueeView.h; sourceTree = "<group>"; };
-		A4C09EE720F77331001CA003 /* MarqueeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarqueeView.m; sourceTree = "<group>"; };
+		A4FF7DD920F8F51900841F32 /* MHMarqueeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMarqueeView.m; sourceTree = "<group>"; };
+		A4FF7DDA20F8F51900841F32 /* MHMarqueeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMarqueeView.h; sourceTree = "<group>"; };
+		A4FF7DDC20F8F51900841F32 /* MHMarqueeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMarqueeCollectionViewCell.h; sourceTree = "<group>"; };
+		A4FF7DDD20F8F51900841F32 /* MHMarqueeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMarqueeCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +107,7 @@
 		A4C09EB220F771A5001CA003 /* Marquee_Collection_OC */ = {
 			isa = PBXGroup;
 			children = (
-				A4C09EE520F771D0001CA003 /* MarqueeView */,
+				A4FF7DD820F8F51900841F32 /* MHMarqueeView */,
 				A4C09EB320F771A5001CA003 /* AppDelegate.h */,
 				A4C09EB420F771A5001CA003 /* AppDelegate.m */,
 				A4C09EB620F771A5001CA003 /* ViewController.h */,
@@ -136,13 +139,24 @@
 			path = Marquee_Collection_OCUITests;
 			sourceTree = "<group>";
 		};
-		A4C09EE520F771D0001CA003 /* MarqueeView */ = {
+		A4FF7DD820F8F51900841F32 /* MHMarqueeView */ = {
 			isa = PBXGroup;
 			children = (
-				A4C09EE620F77331001CA003 /* MarqueeView.h */,
-				A4C09EE720F77331001CA003 /* MarqueeView.m */,
+				A4FF7DD920F8F51900841F32 /* MHMarqueeView.m */,
+				A4FF7DDA20F8F51900841F32 /* MHMarqueeView.h */,
+				A4FF7DDB20F8F51900841F32 /* views */,
 			);
-			path = MarqueeView;
+			name = MHMarqueeView;
+			path = Marquee_collection_OC/MHMarqueeView;
+			sourceTree = SOURCE_ROOT;
+		};
+		A4FF7DDB20F8F51900841F32 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				A4FF7DDC20F8F51900841F32 /* MHMarqueeCollectionViewCell.h */,
+				A4FF7DDD20F8F51900841F32 /* MHMarqueeCollectionViewCell.m */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +290,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4C09EB820F771A5001CA003 /* ViewController.m in Sources */,
+				A4FF7DDF20F8F51900841F32 /* MHMarqueeCollectionViewCell.m in Sources */,
 				A4C09EC320F771A7001CA003 /* main.m in Sources */,
+				A4FF7DDE20F8F51900841F32 /* MHMarqueeView.m in Sources */,
 				A4C09EB520F771A5001CA003 /* AppDelegate.m in Sources */,
-				A4C09EE820F77331001CA003 /* MarqueeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
