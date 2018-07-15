@@ -30,7 +30,7 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
     if (self = [super initWithFrame:frame]) {
         [self commonInit];
         [self setupUI];
-        [self.collectionView reloadData];
+        
     }
     return self;
 }
@@ -48,7 +48,14 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
     self.collectionView.frame = self.bounds;
 }
 
+- (void)reloadData {
+    [self.collectionView reloadData];
+}
+
 #pragma mark - delegate UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 10;
 }
@@ -73,6 +80,7 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
         [_collectionView registerClass:[MHMarqueeCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
         _collectionView.dataSource = self;
+        _collectionView.delegate = self;
     }
     return _collectionView;
 }

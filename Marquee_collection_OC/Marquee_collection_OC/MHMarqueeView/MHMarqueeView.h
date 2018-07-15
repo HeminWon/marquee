@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MHMarqueeView : UIView
 
+- (void)reloadData;
+
 @end
 
 NS_ASSUME_NONNULL_END

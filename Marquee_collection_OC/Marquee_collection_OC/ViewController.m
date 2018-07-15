@@ -19,10 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self.view addSubview:self.marqueeView];
     
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.marqueeView reloadData];
 }
 
 - (void)viewWillLayoutSubviews {

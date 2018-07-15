@@ -27,6 +27,9 @@
 - (instancetype)initWithRowCount:(NSInteger)rowCount {
     if (self = [super init]) {
         self.rowCount = rowCount;
+        self.columnSpacing = 0.f;
+        self.rowSpacing = 0.f;
+        self.sectionInset = UIEdgeInsetsMake(0.f, 0.f, 0.f, 0.f);
     }
     return self;
 }
@@ -73,7 +76,7 @@
     }];
     
     //collectionView的contentSize.height就等于最长列的最大y值+下内边距
-    return CGSizeMake([self.maxXDic[maxIndex] floatValue] + self.sectionInset.right, 0);
+    return CGSizeMake([self.maxXDic[maxIndex] floatValue] + self.sectionInset.right, 30);
 }
 
 
@@ -127,6 +130,21 @@
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
+}
+
+#pragma mark - setter getter
+- (NSMutableDictionary *)maxXDic {
+    if (!_maxXDic) {
+        _maxXDic = [[NSMutableDictionary alloc] init];
+    }
+    return _maxXDic;
+}
+
+- (NSMutableArray *)attributesArray {
+    if (!_attributesArr) {
+        _attributesArr = [NSMutableArray array];
+    }
+    return _attributesArr;
 }
 
 @end
