@@ -7,8 +7,12 @@
 //
 
 #import "MHMarqueeView.h"
+#import "Layout/MHMarqueeVIewFlowLayout.h"
+#import "views/MHMarqueeCollectionViewCell.h"
 
-@interface MHMarqueeView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
+
+@interface MHMarqueeView ()<UICollectionViewDelegate, UICollectionViewDataSource, MHMarqueeVIewFlowLayoutDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -16,22 +20,63 @@
 
 @implementation MHMarqueeView
 
+
+#pragma mark - Init
+- (instancetype)init {
+    return [self initWithFrame:CGRectZero];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self commonInit];
+        [self setupUI];
+        [self.collectionView reloadData];
+    }
+    return self;
+}
+
+- (void)commonInit {
+    
+}
+
+- (void)setupUI {
+    [self addSubview:self.collectionView];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.collectionView.frame = self.bounds;
+}
+
 #pragma mark - delegate UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
+    return 10;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    MHMarqueeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.text = @"idfadfdsfskldjfs;d";
+    return cell;
+}
+
+#pragma mark - delegate MHMarqueeVIewFlowLayoutDelegate
+- (CGFloat)waterfallLayout:(MHMarqueeVIewFlowLayout *)waterfallLayout itemtWidthForHeight:(CGFloat)itemHeight atIndexPath:(NSIndexPath *)indexPath {
+    return 10;
 }
 
 #pragma mark - setter && getter
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] init];
+        MHMarqueeVIewFlowLayout *flowLayout = [MHMarqueeVIewFlowLayout waterFallLayoutWithRowCount:1];
+        flowLayout.delegate = self;
+        
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        [_collectionView registerClass:[MHMarqueeCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+        _collectionView.dataSource = self;
     }
     return _collectionView;
 }
+
 
 
 @end

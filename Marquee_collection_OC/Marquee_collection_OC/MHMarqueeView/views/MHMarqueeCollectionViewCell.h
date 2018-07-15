@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MHMarqueeCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, copy) NSString *text;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
