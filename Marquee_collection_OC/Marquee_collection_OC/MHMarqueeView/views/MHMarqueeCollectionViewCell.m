@@ -23,9 +23,14 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        //
+        self.backgroundColor = [UIColor lightGrayColor];
+        [self setupUI];
     }
     return self;
+}
+
+- (void)setupUI {
+    [self addSubview:self.label];
 }
 
 #pragma mark - Layout

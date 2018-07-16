@@ -57,7 +57,7 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return 15;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,16 +68,23 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
 
 #pragma mark - delegate MHMarqueeVIewFlowLayoutDelegate
 - (CGFloat)waterfallLayout:(MHMarqueeVIewFlowLayout *)waterfallLayout itemtWidthForHeight:(CGFloat)itemHeight atIndexPath:(NSIndexPath *)indexPath {
-    return 10;
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"idfadfdsfskldjfs;d";
+    [label sizeToFit];
+    
+    return label.frame.size.width;
 }
 
 #pragma mark - setter && getter
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         MHMarqueeVIewFlowLayout *flowLayout = [MHMarqueeVIewFlowLayout waterFallLayoutWithRowCount:1];
+        [flowLayout setColumnSpacing:10 rowSpacing:1 sectionInset:UIEdgeInsetsMake(1, 1, 1, 1)];
         flowLayout.delegate = self;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        _collectionView.showsVerticalScrollIndicator = NO;
+        _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[MHMarqueeCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;

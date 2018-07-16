@@ -76,7 +76,8 @@
     }];
     
     //collectionView的contentSize.height就等于最长列的最大y值+下内边距
-    return CGSizeMake([self.maxXDic[maxIndex] floatValue] + self.sectionInset.right, 30);
+    CGFloat w = [self.maxXDic[maxIndex] floatValue] + self.sectionInset.right;
+    return CGSizeMake(w, 0);
 }
 
 
@@ -140,7 +141,7 @@
     return _maxXDic;
 }
 
-- (NSMutableArray *)attributesArray {
+- (NSMutableArray *)attributesArr {
     if (!_attributesArr) {
         _attributesArr = [NSMutableArray array];
     }
