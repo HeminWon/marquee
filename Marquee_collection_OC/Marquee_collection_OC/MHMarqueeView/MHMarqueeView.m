@@ -68,17 +68,17 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
 
 #pragma mark - delegate MHMarqueeVIewFlowLayoutDelegate
 - (CGFloat)waterfallLayout:(MHMarqueeVIewFlowLayout *)waterfallLayout itemtWidthForHeight:(CGFloat)itemHeight atIndexPath:(NSIndexPath *)indexPath {
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"idfadfdsfskldjfs;d";
-    [label sizeToFit];
+//    UILabel *label = [[UILabel alloc] init];
+//    label.text = @"idfadfdsfskldjfs;d";
+//    [label sizeToFit];
     
-    return label.frame.size.width;
+    return arc4random() % 100 + 100;
 }
 
 #pragma mark - setter && getter
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        MHMarqueeVIewFlowLayout *flowLayout = [MHMarqueeVIewFlowLayout waterFallLayoutWithRowCount:1];
+        MHMarqueeVIewFlowLayout *flowLayout = [MHMarqueeVIewFlowLayout waterFallLayoutWithRowCount:2];
         [flowLayout setColumnSpacing:10 rowSpacing:1 sectionInset:UIEdgeInsetsMake(1, 1, 1, 1)];
         flowLayout.delegate = self;
         

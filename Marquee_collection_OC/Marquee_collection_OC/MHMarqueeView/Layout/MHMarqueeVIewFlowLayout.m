@@ -114,7 +114,7 @@
     CGFloat itemX = [self.maxXDic[minIndex] floatValue] + self.columnSpacing;
     
     //item的y值 = 最短列的最大y值 + 行间距
-    CGFloat itemY = self.sectionInset.top + (self.rowSpacing + itemWidth) * minIndex.integerValue;
+    CGFloat itemY = self.sectionInset.top + (self.rowSpacing + itemHeight) * minIndex.integerValue;
     
     //设置attributes的frame
     attributes.frame = CGRectMake(itemX, itemY, itemWidth, itemHeight);
@@ -127,10 +127,6 @@
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     return self.attributesArr;
-}
-
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
-    return YES;
 }
 
 #pragma mark - setter getter

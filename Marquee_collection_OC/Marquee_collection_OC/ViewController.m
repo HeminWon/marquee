@@ -33,7 +33,7 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    self.marqueeView.frame = CGRectMake(10, 100, 355, 30);
+    self.marqueeView.frame = CGRectMake(10, 100, 355, 60);
 }
 
 #pragma mark - setter && getter
