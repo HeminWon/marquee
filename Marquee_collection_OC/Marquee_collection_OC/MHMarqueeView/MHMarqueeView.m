@@ -15,6 +15,7 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
 @interface MHMarqueeView ()<UICollectionViewDelegate, UICollectionViewDataSource, MHMarqueeVIewFlowLayoutDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, assign) CADisplayLink *displayLink;
 
 @end
 
@@ -36,7 +37,7 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
 }
 
 - (void)commonInit {
-    
+    self.displayLink.paused = NO;
 }
 
 - (void)setupUI {
@@ -75,6 +76,11 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
     return arc4random() % 100 + 100;
 }
 
+- (void)updateContentOffset:(CADisplayLink *)displayLink {
+    self.collectionView.contentOffset = CGPointMake(self.collectionView.contentOffset.x + 0.5f, 0);
+}
+
+
 #pragma mark - setter && getter
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
@@ -92,6 +98,14 @@ static NSString * const reuseIdentifier = @"MHMarqueeCollectionViewCell";
     return _collectionView;
 }
 
-
+- (CADisplayLink *)displayLink {
+    if (!_displayLink) {
+        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateContentOffset:)];
+        _displayLink.preferredFramesPerSecond = 60;
+        [_displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                               forMode:NSDefaultRunLoopMode];
+    }
+    return _displayLink;
+}
 
 @end
